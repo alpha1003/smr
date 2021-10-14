@@ -1,0 +1,101 @@
+{
+  "project_info": {
+    "project_number": "775692371122",
+    "firebase_url": "https://simoric.firebaseio.com",
+    "project_id": "simoric",
+    "storage_bucket": "simoric.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:775692371122:android:bbda155f2de220535cb5ab",
+        "android_client_info": {
+          "package_name": "com.example.smr"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "775692371122-212b2cgodnclu7gmolt7k02fc1ptjf0h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.smr",
+            "certificate_hash": "ec59924f5c16abea2c7be0359eaa9f2b9ecd053c"
+          }
+        },
+        {
+          "client_id": "775692371122-c5n4re4picq24ioki88tsmlvjtmg9n6s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfi7GkgRNRsozFjpfc_i5oZcvI_IcWtc4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "775692371122-85r2fo6rf9vd5595d81alcvedkmrmk6m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:775692371122:android:a7c0aae9d4f00bd45cb5ab",
+        "android_client_info": {
+          "package_name": "com.simoric_project.martin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "775692371122-61vmt7adnlhajl0iap4i5hrkfqachg0b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.simoric_project.martin",
+            "certificate_hash": "24938d3de3b7e22cfe1b2eaa78daeaab3d892e6f"
+          }
+        },
+        {
+          "client_id": "775692371122-h1208chkukjji0cav3ojvrotvgbfkkjj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.simoric_project.martin",
+            "certificate_hash": "a3665c5a6876dd73d701a6a4e43e1301d9c72665"
+          }
+        },
+        {
+          "client_id": "775692371122-n9hieve96e57g5a5vcmvrjnat3h8jl21.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.simoric_project.martin",
+            "certificate_hash": "26558238b06347c081d9b7539c7cbf9bad3180a7"
+          }
+        },
+        {
+          "client_id": "775692371122-c5n4re4picq24ioki88tsmlvjtmg9n6s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfi7GkgRNRsozFjpfc_i5oZcvI_IcWtc4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "775692371122-85r2fo6rf9vd5595d81alcvedkmrmk6m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
