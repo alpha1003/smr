@@ -2,7 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/button_list.dart';
 import 'package:flutter_signin_button/button_view.dart';
-import 'package:smr/src/theme/theme.dart' as tema; 
+import 'package:smr/src/theme/theme.dart' as tema;
+import 'package:smr/src/widgets/background.dart'; 
 
 
 class LoginPage extends StatelessWidget {
@@ -15,7 +16,7 @@ class LoginPage extends StatelessWidget {
       child: Scaffold(
         body: Stack(
              children: [
-                 _background(context), 
+                 tema.gradientBackGround,
                  _loginCard(context),
              ],
         ),
@@ -23,13 +24,7 @@ class LoginPage extends StatelessWidget {
     );
   }
 
-  Widget _background(BuildContext context){
-      return Container(
-          width: MediaQuery.of(context).size.width,
-          height: double.infinity,
-          child: Image(image: AssetImage("images/fondo.jpg"),fit: BoxFit.cover,)
-      ); 
-  } 
+  
 
   Widget _loginCard(BuildContext context){ 
 
@@ -48,7 +43,7 @@ class LoginPage extends StatelessWidget {
                       margin: EdgeInsets.symmetric(vertical: 30.0),
                       padding: EdgeInsets.symmetric(vertical: 50.0),
                       decoration: BoxDecoration(
-                                        color: Colors.white.withOpacity(0.4),
+                                        color: Colors.white.withOpacity(0.8),
                                         borderRadius: BorderRadius.circular(5.0),
                                         boxShadow: <BoxShadow>[
                                           BoxShadow(
@@ -61,13 +56,15 @@ class LoginPage extends StatelessWidget {
                    ),
                    child: Column(
                          children: [
-                             Text("Iniciar Sesion", style: tema.styleText_1,),
+                             Text("Sign In", style: tema.styleText_1,),
                              _textMail(context),
                              SizedBox(height: 20.0,),
                              _textPassword(context),
                               SizedBox(height: 10.0,),
                             _loginButton(context),
                             SizedBox(height: 30.0,),
+                            _newUser(),
+                            SizedBox(height: 10.0,),
                             _googleLoginButton(),
                              
                          ],        
@@ -76,6 +73,23 @@ class LoginPage extends StatelessWidget {
               ],
           ),
       );
+  }
+
+  RichText _newUser() {
+    return RichText(
+             text: TextSpan(
+                 text: "New user?    ",
+                 style: tema.styleText_2,
+                 children: [
+                     TextSpan(
+                         text: "Sign Up",
+                         style: TextStyle(
+                              color: Colors.blue
+                         ),
+                     ),
+                 ]
+             ),
+          );
   } 
 
   Widget _textMail(BuildContext context) {
@@ -90,7 +104,7 @@ class LoginPage extends StatelessWidget {
         child: TextField(
                    decoration: InputDecoration(
                           icon: Icon(Icons.alternate_email, color: Colors.black),
-                          labelText: 'Correo electrónico',               
+                          labelText: 'E - Mail',               
         )
        ),
      );
@@ -109,7 +123,7 @@ class LoginPage extends StatelessWidget {
         child: TextField(
                    decoration: InputDecoration(
                           icon: Icon(Icons.lock, color: Colors.black),
-                          labelText: 'Contrasena',               
+                          labelText: 'Password',               
         )
        ),
      );
@@ -120,7 +134,7 @@ class LoginPage extends StatelessWidget {
         return TextButton(
               
               onPressed: (){},
-              child: Text("Ingresar")
+              child: Text("Login")
       );
   } 
 

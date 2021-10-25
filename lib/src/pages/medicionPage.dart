@@ -1,7 +1,9 @@
 import 'dart:async';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+import 'package:intl/intl.dart'; 
+import 'package:smr/src/theme/theme.dart' as tema;
+import 'package:smr/src/widgets/background.dart';
 import 'package:wakelock/wakelock.dart';
 import '../../chart.dart';
 
@@ -72,120 +74,104 @@ class MedicionPageView extends State<MedicionPage>
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: Column(
-          children: <Widget>[
-            Container(
-              margin: EdgeInsets.all(20.0),
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      Text(
-                        "Instrucciones",
-                        style: styleText,
-                      )
-                    ],
-                    mainAxisAlignment: MainAxisAlignment.center,
-                  ),
-                  Text(
-                    "1. Toque el ícono del centro y luego coloque su dedo.",
-                    style: styleText,
-                  ),
-                  Text(
-                    "2. Asegurese de que su dedo cobra el flash y la cámara principal.",
-                    style: styleText,
-                  ),
-                  Text(
-                    "3. Mantenga el dedo hasta que podamos calcular su ritmo cardiaco.",
-                    style: styleText,
-                  ),
-                ],
-              ),
-            ),
-            Expanded(
-                flex: 1,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    
-                    Expanded(
-                      flex: 1,
-                      child: Center(
-                          child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: <Widget>[
-                          Text(
-                            "Ritmo estimado",
-                            style: TextStyle(fontSize: 18, color: Colors.grey),
-                          ),
-                          Text(
-                            (_bpmFinal > 30 && _bpmFinal < 150
-                                ? _bpmFinal.toString() + " BPM"
-                                : "--"),
-                            style: TextStyle(
-                                fontSize: 32, fontWeight: FontWeight.bold),
-                          ),
-                          TextButton(
-                            //color: Colors.greenAccent,
-                            onPressed: () {
-                              if (_bpmFinal > 0) {
-                                _preguntar(context);
-                              } else {
-                                // utils.mostrarAlerta(context,
-                                //     "No hay registro que guardar", "Alerta");
-                              }
-                            },
-                            child: Text("GUARDAR REGISTRO"),
-                          ),
-                          TextButton(
-                            //color: Colors.redAccent,
-                            onPressed: () => _preguntar2(context),
-                            child: Text("ENVIAR ALERTA"),
-                          ),
-                        ],
-                      )),
-                    ),
-                  ],
-                )),
-            Expanded(
-              flex: 1,
-              child: Center(
-                child: Transform.scale(
-                  scale: _iconScale,
-                  child: IconButton(
-                    icon:
-                        Icon(_toggled ? Icons.favorite : Icons.favorite_border),
-                    color: Colors.red,
-                    iconSize: 128,
-                    onPressed: () {
-                      if (_toggled) {
-                        _untoggle();
-                      } else {
-                        _toggle();
-                      }
-                    },
-                  ),
-                ),
-              ),
-            ),
-            Expanded(
-              flex: 1,
-              child: Container(
-                margin: EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(18),
-                    ),
-                    border: Border.all(color: Colors.black),
-                    color: Colors.white38),
-                child: Chart(_data),
-              ),
-            ),
-          ],
+        child: Stack(
+             
+            children: [
+                tema.gradientBackGround,
+                _contenido(context),
+            ],
         ),
       ),
     );
+  }
+
+  Column _contenido(BuildContext context) {
+    return Column( 
+        
+        children: <Widget>[ 
+          SizedBox(height: 30.0,),
+          Text("Iniciar medicion", style: tema.styleText_2.copyWith(fontSize: 30) ),
+          Expanded(
+            flex: 1,
+            child: Center(
+              child: Transform.scale(
+                scale: _iconScale,
+                child: IconButton(
+                  icon:
+                      Icon(_toggled ? Icons.favorite : Icons.favorite_border),
+                  color: Colors.red,
+                  iconSize: 100,
+                  onPressed: () {
+                    if (_toggled) {
+                      _untoggle();
+                    } else {
+                      _toggle();
+                    }
+                  },
+                ),
+              ),
+            ),
+          ),
+          Container( 
+            
+            height: MediaQuery.of(context).size.height * 0.15,
+            width: MediaQuery.of(context).size.width * 0.75,
+            margin: EdgeInsets.all(12),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(18),
+                ),
+                border: Border.all(color: Colors.black),
+                color: Colors.white38),
+            child: Chart(_data),
+          ),
+          Expanded(
+              flex: 1,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Expanded(
+                    flex: 1,
+                    child: Center(
+                        child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          "Ritmo estimado",
+                          style: tema.styleText_2.copyWith(fontWeight: FontWeight.bold,color: Colors.red),
+                        ),
+                        Text(
+                          (_bpmFinal > 30 && _bpmFinal < 150
+                              ? _bpmFinal.toString() + " BPM"
+                              : "--"),
+                          style: TextStyle(
+                              fontSize: 32, fontWeight: FontWeight.bold),
+                        ),
+                        TextButton(
+                          //color: Colors.greenAccent,
+                          onPressed: () {
+                            if (_bpmFinal > 0) {
+                              _preguntar(context);
+                            } else {
+                              // utils.mostrarAlerta(context,
+                              //     "No hay registro que guardar", "Alerta");
+                            }
+                          },
+                          child: Text("GUARDAR REGISTRO"),
+                        ),
+                        TextButton(
+                          //color: Colors.redAccent,
+                          onPressed: () => _preguntar2(context),
+                          child: Text("ENVIAR ALERTA"),
+                        ),
+                      ],
+                    )),
+                  ),
+                ],
+              )),
+        ],
+      );
   }
 
   void _clearData() {
